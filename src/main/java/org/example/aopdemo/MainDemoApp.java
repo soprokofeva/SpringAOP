@@ -19,6 +19,13 @@ public class MainDemoApp {
         theAccountDAO.addAccount(myAccount, true);
         theAccountDAO.doWork();
 
+//        call the accountdao getter/setter method
+        theAccountDAO.setName("MEOW");
+        theAccountDAO.setServiceCode("^_^");
+
+        String name = theAccountDAO.getName();
+        String code = theAccountDAO.getServiceCode();
+
 //        call the membership business method
         MembershipDAO theMembershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
         theMembershipDAO.addSillyMember();
