@@ -8,12 +8,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class MyDemoLoggingAspect {
 
-//    this is where we add all of our releated advices for logging
+//    this is where we add all of our related advices for logging
 
-// start with @Before type method
-    @Before("execution(* add*())")
-    public void beforeAddAccountAdvice(){
+    // start with @Before type method
+//    @Before("execution(* add*(org.example.aopdemo.Account, ..))")
+//    @Before("execution(* add*(..))")
 
+//    in a package
+    @Before("execution(* org.example.aopdemo.dao.*.*(..))")
+    public void beforeAddAccountAdvice() {
         System.out.println("\n==========>>> Executing @Before advice on method");
     }
 
