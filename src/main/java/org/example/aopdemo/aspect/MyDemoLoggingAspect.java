@@ -5,17 +5,21 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.example.aopdemo.Account;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
 
 @Aspect
 @Component
 @Order(2)
 public class MyDemoLoggingAspect {
+    private static final Logger LOG = LoggerFactory.getLogger(MyDemoLoggingAspect.class);
 
     @Before("org.example.aopdemo.aspect.UtilAopExpressions.forDaoPackageNoGetterSetter()")
     public void beforeAddAccountAdvice(JoinPoint theJoinpoint) {
-        System.out.println("\n=====>>> Executing @Before advice on method");
+        LOG.info("Executing @Before advice on method");
 
 //        display the method signature
         MethodSignature methodSignature = (MethodSignature) theJoinpoint.getSignature();
@@ -25,7 +29,7 @@ public class MyDemoLoggingAspect {
 //        get args
         Object[] args = theJoinpoint.getArgs();
 
-//        loop thru args
+//        loop the args
         for (Object arg : args) {
             System.out.println(arg);
 
