@@ -11,7 +11,13 @@ public class AccountDAO {
     private String name;
     private String serviceCode;
 
-    public List<Account> findAccounts() {
+    public List<Account> findAccounts(boolean tripWire) {
+
+//        simulate the exception
+        if (tripWire) {
+            throw new RuntimeException("No soup for you!!!");
+        }
+
         List<Account> accounts = new ArrayList<>();
 
 //        create sample accounts
